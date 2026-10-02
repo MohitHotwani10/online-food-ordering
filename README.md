@@ -38,6 +38,11 @@ This project demonstrates:
 - AWS
 - Terraform
 
+## 
+
+Entering sql :
+docker exec -it foodexpress-db mysql -ufooduser -pfoodpass foodexpress
+
 ## Project
 
 ASD&D Mini Project - Online Food Ordering System

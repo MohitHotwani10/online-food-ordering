@@ -1,3 +1,5 @@
+import os
+import time
 from flask import (
     Flask,
     render_template,
@@ -35,7 +37,10 @@ app = Flask(
 app.config["SECRET_KEY"] = "foodexpress-dev-key"
 
 # SQLite database
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///foodexpress.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
+    "DATABASE_URL",
+    "sqlite:///foodexpress.db"
+)
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -230,9 +235,33 @@ class OrderItem(db.Model):
 
 with app.app_context():
 
-    db.create_all()
+    # Try connecting to the database
+    # MySQL may take a few seconds to start in Docker Compose
+    for attempt in range(10):
 
-    # Add sample food only if table is empty
+        try:
+            db.create_all()
+
+            print("Database connection successful!")
+
+            break
+
+        except Exception as error:
+
+            print(
+                f"Database not ready. "
+                f"Retrying... ({attempt + 1}/10)"
+            )
+
+            time.sleep(5)
+
+    else:
+        raise RuntimeError(
+            "Could not connect to the database."
+        )
+
+
+    # Add sample food only if the table is empty
     if FoodItem.query.count() == 0:
 
         sample_food = [

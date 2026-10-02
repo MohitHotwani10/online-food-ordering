@@ -1,0 +1,49 @@
+services:
+
+  web:
+    build: .
+    container_name: foodexpress-web
+
+    ports:
+      - "5000:5000"
+
+    environment:
+      DATABASE_URL: mysql+pymysql://fooduser:foodpass@db:3306/foodexpress
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  db:
+    image: mysql:8.4
+    container_name: foodexpress-db
+
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: foodexpress
+      MYSQL_USER: fooduser
+      MYSQL_PASSWORD: foodpass
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-prootpass"
+        ]
+
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+volumes:
+
+  mysql_data:
