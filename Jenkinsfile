@@ -29,6 +29,7 @@ pipeline {
         stage('Check Docker') {
             steps {
                 bat '"%DOCKER%" --version'
+                bat '"%DOCKER%" info'
             }
         }
     }
