@@ -32,6 +32,13 @@ pipeline {
                 bat '"%DOCKER%" build -t foodexpress:latest .'
             }
         }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying FoodExpress...'
+                bat '"%DOCKER%" compose down'
+                bat '"%DOCKER%" compose up -d --build'
+            }
+        }
     }
 
     post {
