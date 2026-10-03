@@ -26,10 +26,10 @@ pipeline {
                 bat '"%PYTHON%" -m pytest tests/'
             }
         }
-        stage('Check Docker') {
+        stage('Build Docker Image') {
             steps {
-                bat '"%DOCKER%" --version'
-                bat '"%DOCKER%" info'
+                echo 'Building FoodExpress Docker image...'
+                bat '"%DOCKER%" build -t foodexpress:latest .'
             }
         }
     }
