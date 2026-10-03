@@ -46,7 +46,8 @@ docker exec -it foodexpress-db mysql -ufooduser -pfoodpass foodexpress
 ##
 
 ngrok used for tunnel between jenkins and github
-
+to connect between github and jenkins
+.\ngrok.exe http 8080
 
 ## Project
 
