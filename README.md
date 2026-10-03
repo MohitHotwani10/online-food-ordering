@@ -49,6 +49,30 @@ ngrok used for tunnel between jenkins and github
 to connect between github and jenkins
 .\ngrok.exe http 8080
 
+## pipeline
+current pipeline for jenkins(CI/CD)
+git push
+   ↓
+GitHub
+   ↓ webhook
+Jenkins starts automatically
+   ↓
+Tests
+   ↓
+Build Docker image
+   ↓
+Deploy stage
+   ↓
+docker-compose down
+   ↓
+docker-compose up -d --build
+   ↓
+foodexpress-db starts automatically
+   ↓
+MySQL becomes healthy
+   ↓
+foodexpress-web starts automatically
+
 ## Project
 
 ASD&D Mini Project - Online Food Ordering System
