@@ -43,6 +43,11 @@ This project demonstrates:
 Entering sql :
 docker exec -it foodexpress-db mysql -ufooduser -pfoodpass foodexpress
 
+##
+
+ngrok used for tunnel between jenkins and github
+
+
 ## Project
 
 ASD&D Mini Project - Online Food Ordering System
