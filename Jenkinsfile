@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PYTHON = 'C:\\Users\\kunal\\AppData\\Local\\Programs\\Python\\Python314\\python.exe'
+    }
+
     stages {
 
         stage('Checkout') {
@@ -11,14 +15,14 @@ pipeline {
 
         stage('Setup') {
             steps {
-                bat 'python --version'
-                bat 'python -m pip install -r requirements.txt'
+                bat '"%PYTHON%" --version'
+                bat '"%PYTHON%" -m pip install -r requirements.txt'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'python -m pytest tests/'
+                bat '"%PYTHON%" -m pytest tests/'
             }
         }
     }
