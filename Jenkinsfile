@@ -4,6 +4,7 @@ pipeline {
     environment {
         PYTHON = 'C:\\Users\\kunal\\AppData\\Local\\Programs\\Python\\Python314\\python.exe'
         DOCKER = 'C:\\Users\\kunal\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe'
+        COMPOSE = 'C:\\Users\\kunal\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker-compose.exe'
     }
 
     stages {
@@ -35,8 +36,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying FoodExpress...'
-                bat '"%DOCKER%" compose down'
-                bat '"%DOCKER%" compose up -d --build'
+                bat '"%COMPOSE%" down'
+                bat '"%COMPOSE%" up -d --build'
             }
         }
     }
