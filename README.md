@@ -102,6 +102,18 @@ flask_http_request_duration_seconds_sum
 /
 flask_http_request_duration_seconds_count
 
+flask_http_request_total
+        ↓
+How many HTTP requests occurred
+
+flask_http_request_duration_seconds_count
+        ↓
+How many requests were measured for duration
+
+flask_http_request_duration_seconds_sum
+        ↓
+Total time spent processing those measured requests
+
 _count → How many requests?
 _sum   → How much total time?
 _sum / _count → Average time per request
