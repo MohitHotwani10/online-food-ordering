@@ -130,6 +130,16 @@ PromQL query
     ↓
 Request counts / errors / availability
 
+200 → OK / Successful              ✅
+
+302 → Redirect                     ↪️
+
+304 → Not Modified / Use cache     📦
+
+404 → Page/resource not found      ❌
+
+500 → Internal server error        ❌
+
 ## Project
 
 ASD&D Mini Project - Online Food Ordering System
