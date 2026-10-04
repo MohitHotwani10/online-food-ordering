@@ -54,6 +54,10 @@ ngrok used for tunnel between jenkins and github
 to connect between github and jenkins
 .\ngrok.exe http 8080
 
+##
+starting 
+docker start foodexpress-web foodexpress-db foodexpress-prometheus
+
 ## jira
 
 ## docker
