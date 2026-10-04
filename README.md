@@ -38,6 +38,11 @@ This project demonstrates:
 - AWS
 - Terraform
 
+##
+activating virtual environment
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\venv\Scripts\Activate.ps1
+
 ## 
 
 Entering sql :
