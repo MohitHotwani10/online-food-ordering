@@ -49,6 +49,8 @@ ngrok used for tunnel between jenkins and github
 to connect between github and jenkins
 .\ngrok.exe http 8080
 
+## jira
+
 ## pipeline
 current pipeline for jenkins(CI/CD)
 git push
