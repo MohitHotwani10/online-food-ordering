@@ -42,7 +42,19 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+      
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: foodexpress-prometheus
 
+    ports:
+      - "9090:9090"
+
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+    depends_on:
+      - web
 
 volumes:
 

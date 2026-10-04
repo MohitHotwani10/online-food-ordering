@@ -1,5 +1,6 @@
 import os
 import time
+
 from flask import (
     Flask,
     render_template,
@@ -9,6 +10,7 @@ from flask import (
     flash,
     session
 )
+from prometheus_flask_exporter import PrometheusMetrics
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -27,7 +29,7 @@ app = Flask(
     template_folder="app/templates",
     static_folder="app/static"
 )
-
+metrics = PrometheusMetrics(app)
 
 # ==================================================
 # APPLICATION CONFIGURATION
@@ -925,6 +927,7 @@ def update_order_status(order_id):
 
     return redirect(url_for("admin"))
 
+
 # ==================================================
 # RUN APPLICATION
 # ==================================================
@@ -934,5 +937,6 @@ if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
         port=5000,
-        debug=True
+        debug=True,
+        use_reloader=False
     )

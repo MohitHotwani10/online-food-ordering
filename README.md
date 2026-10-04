@@ -84,6 +84,40 @@ MySQL becomes healthy
    ↓
 foodexpress-web starts automatically
 
+## prometheus
+to open prometheus
+http://localhost:9090
+
+/metrics = data produced by application
+Prometheus = collects/stores monitoring data
+PromQL query = asks questions about that data
+
+queries
+1-up
+2-flask_http_request_total
+3-flask_http_request_duration_seconds_count
+4-flask_http_request_duration_seconds_sum
+5-
+flask_http_request_duration_seconds_sum
+/
+flask_http_request_duration_seconds_count
+
+_count → How many requests?
+_sum   → How much total time?
+_sum / _count → Average time per request
+
+FoodExpress
+    ↓
+generates HTTP activity
+    ↓
+/metrics exposes metrics
+    ↓
+Prometheus scrapes web:5000 every 5 seconds
+    ↓
+PromQL query
+    ↓
+Request counts / errors / availability
+
 ## Project
 
 ASD&D Mini Project - Online Food Ordering System
