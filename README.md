@@ -51,6 +51,10 @@ to connect between github and jenkins
 
 ## jira
 
+## docker
+to stop docker
+docker stop foodexpress-web foodexpress-db
+
 ## pipeline
 current pipeline for jenkins(CI/CD)
 git push
