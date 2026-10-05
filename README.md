@@ -38,6 +38,29 @@ This project demonstrates:
 - AWS
 - Terraform
 
+## 
+A Docker image is a read-only template containing our application and its dependencies, whereas a Docker container is a running instance of that image.
+
+##
+building docker compose
+docker compose up -d --build
+
+##
+docker ps
+        ↓
+All running Docker containers
+        ↓
+foodexpress-web
+foodexpress-db
+foodexpress-prometheus
+
+
+docker compose ps
+        ↓
+Containers belonging to THIS Compose project
+        ↓
+none
+
 ##
 activating virtual environment
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
@@ -47,6 +70,11 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 Entering sql :
 docker exec -it foodexpress-db mysql -ufooduser -pfoodpass foodexpress
+
+##
+
+to run single container
+docker run -d -p 5000:5000 --name foodexpress-container foodexpress
 
 ##
 
